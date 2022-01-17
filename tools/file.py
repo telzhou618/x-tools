@@ -28,6 +28,7 @@ def _download(url, name):
                         bar.update(len(chunk))
 
 
+# 解析文件名称
 def get_file_name(url):
     if '?' in url:
         return url.split('?')[0].split('/')[-1]

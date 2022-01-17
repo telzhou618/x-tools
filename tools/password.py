@@ -7,15 +7,15 @@ import random
 @click.option("-c", "--count", flag_value=16, is_flag=False, default=16,
               help="Length of password, default is 16 chars")
 @click.option("-A", "--upper-az", flag_value=True, is_flag=False, default=False, type=bool,
-              help="contain [A~Z]")
+              help="Contain characters[A~Z]")
 @click.option("-a", "--letter-az", flag_value=True, is_flag=False, default=False, type=bool,
-              help="contain [a~z]")
+              help="Contain characters[a~z]")
 @click.option("-n", "--number", flag_value=True, is_flag=False, default=False, type=bool,
-              help="contain [0~9]")
+              help="Contain characters[0~9]")
 @click.option("-s", "--special", flag_value=True, is_flag=False, default=False, type=bool,
-              help="contain special characters")
+              help="Contain characters[!@#$%^&*]")
 @click.option("-all", "--all-char", flag_value=True, is_flag=False, default=False, type=bool,
-              help="contain any characters['!', '@', '#', '$', '%', '^', '&', '*']")
+              help="Contain all characters")
 def password(count, upper_az, letter_az, number, special, all_char):
     """Password generate"""
     result_list = []

@@ -35,11 +35,3 @@ Example:
     else:
         ret_str = re.text
     click.echo(ret_str)
-
-
-def main():
-    x_request()
-
-
-if __name__ == '__main__':
-    main()
