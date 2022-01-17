@@ -16,7 +16,7 @@ ua = UserAgent()
 @click.argument('url')
 def request(url, headers, params, json, method, format):
     """
-request is http request tools
+Http request tools
 
 Example:
 

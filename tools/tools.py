@@ -9,7 +9,7 @@ from .request import request
 @click.group()
 @click.help_option('-h', '--help', help="Show this message and exit")
 def cli():
-    """tools is a collection of tools developed in Python"""
+    """x-tools is a collection of tools developed in Python"""
 
 
 def main():

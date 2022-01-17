@@ -1,2 +1,5 @@
 requests>=2.24.0
 click>=7.0.3
+tools~=0.1
+tqdm~=4.62.3
+setuptools~=60.5.0

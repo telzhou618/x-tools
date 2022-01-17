@@ -3,13 +3,16 @@ import requests
 
 
 @click.command()
-@click.option("-url", "--url", help="Picture URL")
+@click.option("-url", "--url", help="Picture url", required=True)
 @click.option("-name", "--name", help="Picture rename")
-def image(url, name=None):
+def image(url: str, name=None):
     """Image download"""
-    assert url is not None
+
     if name is None:
-        name = url.split('/')[-1]
+        if '?' in url:
+            name = url.split('?')[0].split('/')[-1]
+        else:
+            name = url.split('/')[-1]
     content = requests.get(url).content
     with open("./" + name, 'wb') as file:
         file.write(content)

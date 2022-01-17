@@ -17,7 +17,7 @@ import random
 @click.option("-all", "--all-char", flag_value=True, is_flag=False, default=False, type=bool,
               help="contain any characters['!', '@', '#', '$', '%', '^', '&', '*']")
 def password(count, upper_az, letter_az, number, special, all_char):
-    """Password generate utils"""
+    """Password generate"""
     result_list = []
     upper_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
                   'U', 'V', 'W', 'X', 'Y', 'Z']
