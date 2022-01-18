@@ -19,6 +19,15 @@ Commands:
 ## Example:
 
 ### Download file
+
+Options:
+```shell
+  -url, --url TEXT    file url  [required]
+  -name, --name TEXT  Picture rename
+  --help              Show this message and exit.
+```
+
+Example:
 ```shell
 x-tools file -url https://vscode.cdn.azure.cn/stable/e5a624b788d92b8d34d1392e4c4d9789406efe8f/VSCodeUserSetup-x64-1.51.1.exe
 ```
@@ -35,9 +44,29 @@ Options:
   -all, --all-char BOOLEAN  Contain all characters
   --help                    Show this message and exit.
 ```
+Example:
 ```shell
 > x-tools password -c 16 # generate password length is 16 chars
 > EPMhqHb#*ZtM0dHI
 ```
 
 ###  Http request
+
+Usage: sh.py request [OPTIONS] URL
+
+Options:
+```shell
+  -m, --method [get|post]         Request method
+  -h, --headers TEXT              Headers dict
+  -p, --params TEXT               Params dict
+  -j, --json-params TEXT          Json data dict
+  -f, --files TEXT                Upload files
+  -fr, --format-result [text|json]
+                                  Format return data
+  --help                          Show this message and exit.
+```
+Example:
+```shell
+ x-tools request https://www.httpbin.org/get
+ x-tools request https://www.httpbin.org/post -m post -j {\"p1\":\"v1\"}
+```
