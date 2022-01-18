@@ -19,7 +19,7 @@ Commands:
 ## Example:
 
 ### Download file
-
+Usage: x-tools file [OPTIONS]
 Options:
 ```shell
   -url, --url TEXT    file url  [required]
@@ -52,7 +52,7 @@ Example:
 
 ###  Http request
 
-Usage: sh.py request [OPTIONS] URL
+Usage: x-tools request [OPTIONS] URL
 
 Options:
 ```shell
