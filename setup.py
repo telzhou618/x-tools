@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="tools",
+    name="x-tools",
     version="0.1",
     author="telzhou",
     author_email="btczhou618@gmail.com",
