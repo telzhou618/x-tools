@@ -102,7 +102,7 @@ def m_csv_to_sql(csv_file, divide_limit, out_file):
                 # 每x条分隔
                 limit = int(divide_limit)
                 tmp_lst.append(val)
-                if i > 0 and i % limit == 0:
+                if (i + 1) % limit == 0:
                     batch_val = ','.join(tmp_lst)
                     sql = insert_pre + batch_val + ';'
                     w.write(sql + "\n")
