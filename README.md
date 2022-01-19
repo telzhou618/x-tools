@@ -72,13 +72,15 @@ Options:
   -n, --number BOOLEAN      Contain characters[0~9]
   -s, --special BOOLEAN     Contain characters[!@#$%^&*]
   -all, --all-char BOOLEAN  Contain all characters
+   -o, --out-file TEXT       Output to file
   --help                    Show this message and exit.
 ```
 
 Example:
 
 ```shell
-> x-tools password -c 16 # generate password length is 16 chars
+# generate password length is 16 chars and out to file
+x-tools password -c 16 -o ./pw.txt 
 > EPMhqHb#*ZtM0dHI
 ```
 
@@ -102,6 +104,8 @@ Options:
 Example:
 
 ```shell
- x-tools request https://www.httpbin.org/get
- x-tools request https://www.httpbin.org/post -m post -j {\"p1\":\"v1\"}
+# get
+x-tools request https://www.httpbin.org/get
+# post
+x-tools request https://www.httpbin.org/post -m post -j {\"p1\":\"v1\"}
 ```

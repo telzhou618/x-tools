@@ -16,7 +16,8 @@ import random
               help="Contain characters[!@#$%^&*]")
 @click.option("-all", "--all-char", flag_value=True, is_flag=False, default=False, type=bool,
               help="Contain all characters")
-def password(count, upper_az, letter_az, number, special, all_char):
+@click.option("-o", "--out-file", help="Output to file")
+def password(count, upper_az, letter_az, number, special, all_char, out_file):
     """Password generate"""
     result_list = []
     upper_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
@@ -42,4 +43,7 @@ def password(count, upper_az, letter_az, number, special, all_char):
         result_list = upper_list + letter_list + number_list + special_char_list
 
     result = "".join([str(random.choice(result_list)) for x in range(count)])
+    if out_file:
+        with open(out_file, 'w') as f:
+            f.write(result)
     click.echo(click.style(f'{result}', fg='magenta'))
