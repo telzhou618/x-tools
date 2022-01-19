@@ -20,7 +20,7 @@ Commands:
 ## Install
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/telzhou618/x-tools/main/run.sh | bash
+curl -fsSL https://raw.githubusercontent.com/telzhou618/x-tools/main/install.sh | bash
 ```
 
 ## Example:
