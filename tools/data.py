@@ -45,6 +45,7 @@ def m_csv_to_jsonlines(csv_file, out_file):
             lst.append(dic)
         with jsonlines.open(out_file, mode='w') as writer:
             writer.write_all(lst)
+    click.echo(out_file)
 
 
 def m_csv_to_json(csv_file, out_file):
@@ -69,6 +70,7 @@ def m_csv_to_json(csv_file, out_file):
             lst.append(dic)
         with open(out_file, 'w') as out:
             out.write(json.dumps(lst))
+    click.echo(out_file)
 
 
 def m_csv_to_sql(csv_file, divide_limit, out_file):
