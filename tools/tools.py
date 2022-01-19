@@ -3,6 +3,7 @@ import click
 from .file import file
 from .request import request
 from .password import password
+from .data import data
 
 
 @click.group()
@@ -15,6 +16,7 @@ def main():
     cli.add_command(file)
     cli.add_command(password)
     cli.add_command(request)
+    cli.add_command(data)
     cli()
 
 

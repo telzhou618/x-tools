@@ -3,3 +3,4 @@ requests~=2.26.0
 tools~=0.1
 tqdm~=4.62.3
 setuptools~=60.5.0
+jsonlines~=3.0.0
