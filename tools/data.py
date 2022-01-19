@@ -12,7 +12,7 @@ import click
 @click.option("-d", "--divide-limit", type=int, help="Limit number of batch sql generated")
 @click.option("-o", "--out-file", help="Output to file")
 def data(csv_to_sql, csv_to_json, csv_to_jsonlines, divide_limit, out_file):
-    """Data convert  processor"""
+    """Data  processor"""
     if csv_to_sql:
         m_csv_to_sql(csv_to_sql, divide_limit, out_file)
     elif csv_to_json:
