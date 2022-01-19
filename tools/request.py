@@ -8,7 +8,8 @@ ua = UserAgent()
 
 
 @click.command()
-@click.option("-m", "--method", type=click.Choice(['get', 'post']), default='get', help="Request method")
+@click.option("-m", "--method", type=click.Choice(['get', 'post', 'head', 'put', 'delete', 'options', 'patch']),
+              default='get', help="Request method")
 @click.option("-h", "--headers", help="Headers dict")
 @click.option("-p", "--params", help="Params dict")
 @click.option("-j", "--json-params", help="Json data dict")
@@ -24,7 +25,6 @@ Example:
     x-tools request https://www.httpbin.org/get
 
     x-tools request https://www.httpbin.org/post -m post -j {\\"p1\\":\\"v1\\"}
-
     """
     data = {}
     method = str(method).upper()
