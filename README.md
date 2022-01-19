@@ -16,6 +16,11 @@ Commands:
   request   Http request tools
   data    Data convert  processor
 ```
+## Install
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/telzhou618/x-tools/main/run.sh | bash
+```
 
 ## Example:
 
