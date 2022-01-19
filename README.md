@@ -2,19 +2,13 @@
 
 x-tools is a collection of tools developed in Python
 
-Options:
-
-```shell
--h, --help  Show this message and exit
-```
-
 Commands:
 
 ```shell
   file      File download
   password  Password generate
   request   Http request tools
-  data      Data   processor
+  data      Data processor
 ```
 
 ## Install
