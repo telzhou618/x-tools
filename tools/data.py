@@ -108,9 +108,10 @@ def m_csv_to_sql(csv_file, divide_limit, out_file):
                     w.write(sql + "\n")
                     tmp_lst.clear()
         else:
-            batch_val = ','.join(tmp_lst)
-            sql = insert_pre + batch_val + ';'
-            w.write(sql + "\n")
-            tmp_lst.clear()
+            if tmp_lst:
+                batch_val = ','.join(tmp_lst)
+                sql = insert_pre + batch_val + ';'
+                w.write(sql + "\n")
+                tmp_lst.clear()
     w.close()
     click.echo(out_file)
