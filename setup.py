@@ -16,7 +16,8 @@ setup(
         'requests',
         'click',
         'tqdm',
-        'jsonlines'
+        'jsonlines',
+        'fake_useragent'
     ],
     entry_points={
         'console_scripts': [
