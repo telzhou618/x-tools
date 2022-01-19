@@ -14,9 +14,30 @@ Commands:
   file      File download
   password  Password generate
   request   Http request tools
+  data    Data convert  processor
 ```
 
 ## Example:
+
+### Data convert  processor
+Usage: x-tools data [OPTIONS]
+
+Options:
+```shell
+  -csv-to-sql, --csv-to-sql TEXT  Convert csv to sql
+  -csv-to-json, --csv-to-json TEXT
+                                  Convert csv to json
+  -csv-to-jsonl, --csv-to-jsonlines TEXT
+                                  Convert csv to jsonlines
+  -d, --divide-limit INTEGER      Limit number of batch sql generated
+  -o, --out-file TEXT             Output to file
+  --help                          Show this message and exit.
+```
+Example:
+```shell
+ # Convert CSV data into SQL statements, and separate every 1000 into batch statements
+ x-tools data -csv-to-sql /home/user.csv -d 1000 -o ./tb_user.sql
+```
 
 ### Download file
 Usage: x-tools file [OPTIONS]

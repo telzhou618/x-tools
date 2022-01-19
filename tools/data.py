@@ -15,10 +15,12 @@ def data(csv_to_sql, csv_to_json, csv_to_jsonlines, divide_limit, out_file):
     """Data convert  processor"""
     if csv_to_sql:
         m_csv_to_sql(csv_to_sql, divide_limit, out_file)
-    if csv_to_json:
+    elif csv_to_json:
         m_csv_to_json(csv_to_json, out_file)
-    if csv_to_jsonlines:
+    elif csv_to_jsonlines:
         m_csv_to_jsonlines(csv_to_jsonlines, out_file)
+    else:
+        click.echo(click.style('x-tools data --help', fg='red'))
 
 
 def m_csv_to_jsonlines(csv_file, out_file):

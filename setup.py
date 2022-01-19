@@ -15,6 +15,8 @@ setup(
     install_requires=[
         'requests',
         'click',
+        'tqdm',
+        'jsonlines'
     ],
     entry_points={
         'console_scripts': [

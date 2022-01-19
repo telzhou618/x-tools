@@ -1,5 +1,3 @@
 python3 setup.py sdist
-
-python3 setup.py install
-
-echo 'tools is install successfully.'
+cd dist
+pip3 install x-tools-0.1.tar.gz
