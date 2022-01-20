@@ -26,14 +26,12 @@ Usage: x-tools data [OPTIONS]
 Options:
 
 ```shell
-  -csv-to-sql, --csv-to-sql TEXT  Convert csv to sql
-  -csv-to-json, --csv-to-json TEXT
-                                  Convert csv to json
-  -csv-to-jsonl, --csv-to-jsonlines TEXT
-                                  Convert csv to jsonlines
-  -d, --divide-limit INTEGER      Limit number of batch sql generated
-  -o, --out-file TEXT             Output to file
-  --help                          Show this message and exit.
+  -csv-to-sql,    --csv-to-sql TEXT         Convert csv to sql
+  -csv-to-json,   --csv-to-json TEXT        Convert csv to json                           
+  -csv-to-jsonl,  --csv-to-jsonlines TEXT   Convert csv to jsonlines                               
+  -d,             --divide-limit INTEGER    Limit number of batch sql generated
+  -o,             --out-file TEXT           Output to file
+  --help                                    Show this message and exit.
 ```
 
 Example:
@@ -72,7 +70,7 @@ Options:
   -n, --number BOOLEAN      Contain characters[0~9]
   -s, --special BOOLEAN     Contain characters[!@#$%^&*]
   -all, --all-char BOOLEAN  Contain all characters
-   -o, --out-file TEXT       Output to file
+  -o, --out-file TEXT       Output to file
   --help                    Show this message and exit.
 ```
 
@@ -96,8 +94,7 @@ Options:
   -p, --params TEXT               Params dict
   -j, --json-params TEXT          Json data dict
   -f, --files TEXT                Upload files
-  -fr, --format-result [text|json]
-                                  Format return data
+  -fr, --format-result [text|json] Format return data
   --help                          Show this message and exit.
 ```
 
