@@ -23,7 +23,7 @@ def data(csv_to_sql, csv_to_json, csv_to_jsonlines, divide_limit, out_file):
         click.echo(click.style('x-tools data --help', fg='red'))
 
 
-def m_csv_to_jsonlines(csv_file, out_file):
+def m_csv_to_jsonlines(csv_file, out_file=None):
     """Convert  csv to jsonlines"""
     filename = csv_file.split("/")[-1].split('.')[0]
     if not out_file:
@@ -33,12 +33,7 @@ def m_csv_to_jsonlines(csv_file, out_file):
         result = reader(f)
         header = next(result)  # column
         for d in result:
-            new_d = []
-            for x in d:
-                if x.isdigit():
-                    new_d.append(int(x))
-                else:
-                    new_d.append(x)
+            new_d = [int(x) if x.isdigit() else x for x in d]
             dic = {}
             for i in range(len(header)):
                 dic[header[i]] = new_d[i]
@@ -48,7 +43,7 @@ def m_csv_to_jsonlines(csv_file, out_file):
     click.echo(out_file)
 
 
-def m_csv_to_json(csv_file, out_file):
+def m_csv_to_json(csv_file, out_file=None):
     """Convert  csv to json"""
     filename = csv_file.split("/")[-1].split('.')[0]
     if not out_file:
@@ -58,12 +53,7 @@ def m_csv_to_json(csv_file, out_file):
         result = reader(f)
         header = next(result)  # column
         for d in result:
-            new_d = []
-            for x in d:
-                if x.isdigit():
-                    new_d.append(int(x))
-                else:
-                    new_d.append(x)
+            new_d = [int(x) if x.isdigit() else x for x in d]
             dic = {}
             for i in range(len(header)):
                 dic[header[i]] = new_d[i]
@@ -73,7 +63,7 @@ def m_csv_to_json(csv_file, out_file):
     click.echo(out_file)
 
 
-def m_csv_to_sql(csv_file, divide_limit, out_file):
+def m_csv_to_sql(csv_file, divide_limit=1, out_file=None):
     """Convert  csv to sql"""
     filename = csv_file.split("/")[-1].split('.')[0]
     if not out_file:
@@ -87,30 +77,23 @@ def m_csv_to_sql(csv_file, divide_limit, out_file):
         insert_pre = "INSERT INTO %s (%s) VALUES " % (filename, column)
         tmp_lst = []
         for i, d in enumerate(result):
-            new_d = []
-            for x in d:
-                if x.isdigit():
-                    new_d.append(x)
-                else:
-                    new_d.append(f"'{x}'")
+            new_d = [x if x.isdigit() else f"'{x}'" for x in d]
             val = "(%s)" % (",".join(new_d))
+            # 默认生成单条SQL语句
             if not divide_limit:
                 sql = insert_pre + val + ";"
                 w.write(sql + "\n")
-                pass
             else:
-                # 每x条分隔
                 limit = int(divide_limit)
                 tmp_lst.append(val)
+                # 每limit条分隔
                 if (i + 1) % limit == 0:
-                    batch_val = ','.join(tmp_lst)
-                    sql = insert_pre + batch_val + ';'
+                    sql = insert_pre + ','.join(tmp_lst) + ';'
                     w.write(sql + "\n")
                     tmp_lst.clear()
         else:
             if tmp_lst:
-                batch_val = ','.join(tmp_lst)
-                sql = insert_pre + batch_val + ';'
+                sql = insert_pre + ','.join(tmp_lst) + ';'
                 w.write(sql + "\n")
                 tmp_lst.clear()
     w.close()
