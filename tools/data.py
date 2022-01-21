@@ -1,6 +1,8 @@
 from csv import reader
 import json
 import jsonlines
+import pandas as pd
+import os
 
 import click
 
@@ -9,22 +11,48 @@ import click
 @click.option("-csv-to-sql", "--csv-to-sql", help="Convert csv to sql")
 @click.option("-csv-to-json", "--csv-to-json", help="Convert csv to json")
 @click.option("-csv-to-jsonl", "--csv-to-jsonlines", help="Convert csv to jsonlines")
+@click.option("-csv-to-xls", "--csv-to-xls", help="Convert csv to xls")
+@click.option("-csv-to-xlsx", "--csv-to-xlsx", help="Convert csv to xlsx")
 @click.option("-d", "--divide-limit", type=int, help="Limit number of batch sql generated")
 @click.option("-o", "--out-file", help="Output to file")
-def data(csv_to_sql, csv_to_json, csv_to_jsonlines, divide_limit, out_file):
-    """Data  processor"""
+def data(csv_to_sql, csv_to_json, csv_to_jsonlines, csv_to_xls, csv_to_xlsx, divide_limit, out_file):
+    """Data processor"""
     if csv_to_sql:
         m_csv_to_sql(csv_to_sql, divide_limit, out_file)
     elif csv_to_json:
         m_csv_to_json(csv_to_json, out_file)
     elif csv_to_jsonlines:
         m_csv_to_jsonlines(csv_to_jsonlines, out_file)
+    elif csv_to_xls:
+        m_csv_to_xls(csv_to_xls, out_file)
+    elif csv_to_xlsx:
+        m_csv_to_xlsx(csv_to_xlsx, out_file)
     else:
-        click.echo(click.style('x-tools data --help', fg='red'))
+        os.system('x-tools data --help')
+
+
+def m_csv_to_xls(csv_file, out_file):
+    """Convert csv to xl"""
+    filename = csv_file.split("/")[-1].split('.')[0]
+    if not out_file:
+        out_file = filename + '.xls'
+    csv = pd.read_csv(csv_file, encoding='utf-8')
+    csv.to_excel(out_file)
+    click.echo(out_file)
+
+
+def m_csv_to_xlsx(csv_file, out_file):
+    """Convert csv to xlsx"""
+    filename = csv_file.split("/")[-1].split('.')[0]
+    if not out_file:
+        out_file = filename + '.xlsx'
+    csv = pd.read_csv(csv_file, encoding='utf-8')
+    csv.to_excel(out_file)
+    click.echo(out_file)
 
 
 def m_csv_to_jsonlines(csv_file, out_file=None):
-    """Convert  csv to jsonlines"""
+    """Convert csv to jsonlines"""
     filename = csv_file.split("/")[-1].split('.')[0]
     if not out_file:
         out_file = filename + '.jsonl'
@@ -44,7 +72,7 @@ def m_csv_to_jsonlines(csv_file, out_file=None):
 
 
 def m_csv_to_json(csv_file, out_file=None):
-    """Convert  csv to json"""
+    """Convert csv to json"""
     filename = csv_file.split("/")[-1].split('.')[0]
     if not out_file:
         out_file = filename + '.json'
@@ -64,7 +92,7 @@ def m_csv_to_json(csv_file, out_file=None):
 
 
 def m_csv_to_sql(csv_file, divide_limit=1, out_file=None):
-    """Convert  csv to sql"""
+    """Convert csv to sql"""
     filename = csv_file.split("/")[-1].split('.')[0]
     if not out_file:
         out_file = filename + '.sql'

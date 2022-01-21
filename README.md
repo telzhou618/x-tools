@@ -28,7 +28,9 @@ Options:
 ```shell
   -csv-to-sql,    --csv-to-sql TEXT         Convert csv to sql
   -csv-to-json,   --csv-to-json TEXT        Convert csv to json                           
-  -csv-to-jsonl,  --csv-to-jsonlines TEXT   Convert csv to jsonlines                               
+  -csv-to-jsonl,  --csv-to-jsonlines TEXT   Convert csv to jsonlines    
+  -csv-to-xls,    --csv-to-xls TEXT         Convert csv to xls,Deprecated
+  -csv-to-xlsx,   --csv-to-xlsx TEXT        Convert csv to xlsx
   -d,             --divide-limit INTEGER    Limit number of batch sql generated
   -o,             --out-file TEXT           Output to file
   --help                                    Show this message and exit.

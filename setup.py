@@ -17,7 +17,9 @@ setup(
         'click',
         'tqdm',
         'jsonlines',
-        'fake_useragent'
+        'fake_useragent',
+        'pandas',
+        'openpyxl'
     ],
     entry_points={
         'console_scripts': [
