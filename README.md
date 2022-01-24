@@ -73,6 +73,7 @@ Options:
   -s, --special BOOLEAN     Contain characters[!@#$%^&*]
   -all, --all-char BOOLEAN  Contain all characters
   -o, --out-file TEXT       Output to file
+  -his, --history BOOLEAN   History generated password
   --help                    Show this message and exit.
 ```
 
@@ -82,6 +83,10 @@ Example:
 # generate password length is 16 chars and out to file
 x-tools password -c 16 -o ./pw.txt 
 > EPMhqHb#*ZtM0dHI
+
+# view history
+x-tools password -his
+
 ```
 
 ### Http request
