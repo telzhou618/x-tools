@@ -1,8 +1,10 @@
+import os
+import datetime
 import click
 import random
 
 
-# 密码生成器
+# Password generate
 @click.command()
 @click.option("-c", "--count", flag_value=16, is_flag=False, default=16,
               help="Length of password, default is 16 chars")
@@ -17,8 +19,21 @@ import random
 @click.option("-all", "--all-char", flag_value=True, is_flag=False, default=False, type=bool,
               help="Contain all characters")
 @click.option("-o", "--out-file", help="Output to file")
-def password(count, upper_az, letter_az, number, special, all_char, out_file):
+@click.option("-his", "--history", flag_value=True, is_flag=False, default=False, help="History generated password")
+def password(count, upper_az, letter_az, number, special, all_char, out_file, history):
     """Password generate"""
+    work_home = os.environ['HOME'] + '/' + 'x-tools'
+    history_file_name = work_home + '/' + 'password.data'
+    if not os.path.exists(work_home):
+        os.mkdir(work_home)  # 创建工作目录
+    if history:
+        try:
+            with open(history_file_name, 'r') as f:
+                for d in f.readlines():
+                    print(d)
+        except FileNotFoundError as error:
+            print('No history', error)
+        return
     result_list = []
     upper_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
                   'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -47,3 +62,6 @@ def password(count, upper_az, letter_az, number, special, all_char, out_file):
         with open(out_file, 'w') as f:
             f.write(result)
     click.echo(click.style(f'{result}', fg='magenta'))
+    # 写入到历史文件
+    with open(history_file_name, 'a') as f:
+        f.write(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '   ' + result + '\n')
