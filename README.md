@@ -10,7 +10,7 @@ Commands:
   request   Http request tools
   data      Data processor
 ```
-## requirements
+## Requirements
 Python 3.9+
 
 ## Install
